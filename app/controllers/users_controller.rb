@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
 	def load_routers  
 		@users_default = Gmaps4rails.build_markers(User.all) do |plot, marker|  
-	  	@address = marker.lat plot.u_address 
-	 		#marker.lng plot.longitude
-	 		#marker.lng plot.longitude  
+	  	marker.lat plot.latitude  
+	 		marker.lng plot.longitude  
 
 	  	@status = rand(1..4)  
 	  	@battery = rand(10..90)  
@@ -23,13 +22,12 @@ class UsersController < ApplicationController
 	  	"height" => 30  
 	  	})  
 
-	  	# marker.infowindow render_to_string(:partial => "/routers/info",   
-	  	# 	:locals => {:name => plot.name, :battery => @battery, :date => rand(6.months.ago..Time.now), :ip => @ip, :connected => @connected })  
+	  	marker.infowindow render_to_string(:partial => "/routers/info",   
+	  		:locals => {:name => plot.name, :battery => @battery, :date => rand(6.months.ago..Time.now), :ip => @ip, :connected => @connected })  
 		end  
  	end
 
 	def index
-		load_routers  
 		@users =User.all
 	end
 

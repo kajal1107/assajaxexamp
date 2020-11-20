@@ -23,14 +23,3 @@
     <%= @user.postal_code %>
 </p>
 <%= link_to "Back",  users_path %>
-
-<div id='map'></div>
-
-<script type="text/javascript">  
-  handler = Gmaps.build('Google');  
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){  
-    markers = handler.addMarkers(<%= raw @user.u_address %>);  
-    handler.bounds.extendWith(markers);  
-    handler.fitMapToBounds();  
-  });  
-</script>

@@ -1,0 +1,7 @@
+$('#users').html("<%= escape_javascript(render partial: 'user', locals: { users: @users } ) %>"); 
+var input = document.getElementById("user_name");
+input.value = '';
+var input = document.getElementById("autocomplete_address");
+input.value = '';
+var input = document.getElementById("country");
+input.value = '';
